@@ -4,7 +4,7 @@
   <!-------------Input-------->
   <div class="d-flex">
 <input  v-model="task" type="text" placeholder="Enter task" class="form-control">
-<button  @Click="submitTask" class="btn btn-warning rounded-0">Submit</button>
+<button v-on:click="submitTask" class="btn btn-warning rounded-0">Submit</button>
   </div>
 
   <!------------------Task Table------->
@@ -59,7 +59,14 @@ export default {
   },
   methods:{
     submitTask(){
-      console.warn("Hello from submit Task");
+      console.warn("button click");
+      if(this.task.length==0)
+        return;
+      
+      this.tasks.push({
+        name:this.task,
+        status:'to-do'
+      })
     }
   }
 
